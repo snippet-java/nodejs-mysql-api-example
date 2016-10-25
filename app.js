@@ -21,13 +21,15 @@ for (var serviceName in services) {
 	}
 }
 var config = require("./config.json");
+var dbConfig = {
+		host     : mysqlCreds.host || config.mysql.host || "",
+		user     : mysqlCreds.user || config.mysql.user || "",
+		password : mysqlCreds.password || config.mysql.password || "",
+		database : mysqlCreds.database || config.mysql.database || ""
+}
+console.log(dbConfig);
 
-var connection = mysql.createConnection({
-	host     : mysqlCreds.host || config.mysql.host || "",
-	user     : mysqlCreds.user || config.mysql.user || "",
-	password : mysqlCreds.password || config.mysql.password || "",
-	database : mysqlCreds.database || config.mysql.database || ""
-});
+var connection = mysql.createConnection(dbConfig);
 
 app.all(["/createtable"], function(req, res) {
 	// by default, will create a student table
