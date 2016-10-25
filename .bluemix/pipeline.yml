@@ -21,10 +21,10 @@ stages:
   - name: Deploy to dev
     type: deployer
     target:
-      region_id: '${REGION_ID}'
-      organization: '${CF_ORGANIZATION}'
-      space: '${CF_SPACE}'
-      application: '${CF_APP}'
+      region_id: ${REGION_ID}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+      application: ${CF_APP}
     script: |-
       #!/bin/bash
 	  cf create-service cleardb spark sample-cleardb
