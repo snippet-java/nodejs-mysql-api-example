@@ -1,0 +1,9 @@
+{
+	"mysql" : {
+		"host" : "",
+		"user" : "",
+		"password" : "",
+  		"database" : "",
+  		"tableName" : "student"
+  	}
+}
