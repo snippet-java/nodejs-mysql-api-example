@@ -4,6 +4,7 @@
 		"user" : "",
 		"password" : "",
   		"database" : "",
-  		"tableName" : "student"
+  		"tableName" : "student",
+  		"connectionLimit" : 4
   	}
 }
