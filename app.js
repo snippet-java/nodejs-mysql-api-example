@@ -51,7 +51,7 @@ app.all(["/createtable"], function(req, res) {
 
 });
 
-app.get(["/create","/insert","/add"], function(req, res) {
+app.all(["/create","/insert","/add"], function(req, res) {
 	//insert a default student row with the firstname John, lastname Doe & random student_id.
 	//accepts any key-value pair from POST & GET and assign to the doc as well.
 	
@@ -94,8 +94,7 @@ app.all(["/list"], function(req, res) {
 });
 
 app.all(["/read","/get"], function(req, res) {
-	//read a row specified by the id in GET or POST.
-	//If none is specified, will read a random row from the table.
+	//read a row specified by the id in GET or POST
 	var id = req.query.id || req.body.id || "";
 	if (id != "") {
 	
@@ -147,7 +146,6 @@ app.all(["/update","/modify"], function(req, res) {
 
 app.all(["/delete","/destroy","/remove"], function(req, res) {
 	// deletes a row from the student table based on the id,
-	// otherwise, randomly delete 1 document
 	// accepts value from POST & GET
 	var id = req.query.id || req.body.id || "";
 	if (id != "") {
