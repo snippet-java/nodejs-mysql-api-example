@@ -211,7 +211,7 @@ app.all(["/deletetable","/destroytable","/removetable","/droptable"], function(r
 	// deletes the student table,
 	// accepts table name value from POST & GET
 	var tablename = req.query.tablename || req.body.tablename || config.mysql.tableName || "";
-	var query = "DROP ?";
+	var query = "DROP TABLE ?";
 	pool.query(query, tablename, function (err, results, fields) {
 		if (err) {
 			res.json({err:err});
