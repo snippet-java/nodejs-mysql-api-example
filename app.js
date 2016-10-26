@@ -27,7 +27,7 @@ var dbConfig = {
 		password : mysqlCreds.password || config.mysql.password || "",
 		database : mysqlCreds.name || config.mysql.database || "",
 		connectionLimit : config.mysql.connectionLimit || 4,
-}
+};
 
 var pool  = mysql.createPool(dbConfig);
 
@@ -49,7 +49,7 @@ app.all(["/createtable"], function(req, res) {
 		res.json({results:results,fields:fields});
 	});
 
-})
+});
 
 app.get(["/create","/insert","/add"], function(req, res) {
 	//insert a default student row with the firstname John, lastname Doe & random student_id.
@@ -76,7 +76,7 @@ app.get(["/create","/insert","/add"], function(req, res) {
 		res.json({results:results,fields:fields});
 	});
 	
-})
+});
 
 app.all(["/list"], function(req, res) {
 	//list out all the rows in the student table
@@ -91,7 +91,7 @@ app.all(["/list"], function(req, res) {
 		res.json({results:results,fields:fields});
 	});
 	
-})
+});
 
 app.all(["/read","/get"], function(req, res) {
 	//read a row specified by the id in GET or POST.
@@ -119,7 +119,7 @@ app.all(["/read","/get"], function(req, res) {
 			res.json({results:results,fields:fields});
 		});
 	}
-})
+});
 
 app.all(["/update","/modify"], function(req, res) {
 	//updates a row based on the id with a random student_id.
@@ -165,7 +165,7 @@ app.all(["/update","/modify"], function(req, res) {
 			
 		});
 	}
-})
+});
 
 
 app.all(["/delete","/destroy","/remove"], function(req, res) {
@@ -175,7 +175,7 @@ app.all(["/delete","/destroy","/remove"], function(req, res) {
 	var id = req.query.id || req.body.id || "";
 	if (id != "") {
 
-		var query = "DELETE FROM student id=?";
+		var query = "DELETE FROM student id = ?";
 		pool.query(query, id, function (err, results, fields) {
 			if (err) {
 				res.json({err:err});
@@ -193,7 +193,7 @@ app.all(["/delete","/destroy","/remove"], function(req, res) {
 			}
 			
 			var id = results[0].id || "";
-			var query = "DELETE FROM student WHERE id=?";
+			var query = "DELETE FROM student WHERE id = ?";
 			pool.query(query, [id], function (err, results, fields) {
 				if (err) {
 					res.json({err:err});
@@ -205,14 +205,14 @@ app.all(["/delete","/destroy","/remove"], function(req, res) {
 			
 		});
 	}
-})
+});
 
 app.all(["/deletetable","/destroytable","/removetable","/droptable"], function(req, res) {
 	// deletes the student table,
 	// accepts table name value from POST & GET
 	var tablename = req.query.tablename || req.body.tablename || config.mysql.tableName || "";
 	var query = "DROP TABLE ?";
-	pool.query(query, tablename, function (err, results, fields) {
+	pool.query(query, [tablename], function (err, results, fields) {
 		if (err) {
 			res.json({err:err});
 			return;
@@ -221,7 +221,7 @@ app.all(["/deletetable","/destroytable","/removetable","/droptable"], function(r
 		res.json({results:results,fields:fields});
 	});
 	
-})
+});
 
 
 function generateStudentID() {
