@@ -110,14 +110,7 @@ app.all(["/read","/get"], function(req, res) {
 		});
 		
 	} else {
-		getRandomRow(function(err, results, fields) {
-			if (err) {
-				res.json({err:err});
-				return;
-			}
-
-			res.json({results:results,fields:fields});
-		});
+		res.json({err:"Please specify an id to read"});
 	}
 });
 
@@ -147,23 +140,7 @@ app.all(["/update","/modify"], function(req, res) {
 		});
 
 	} else {
-		getRandomRow(function(err, results, fields) {
-			if (err) {
-				res.json({err:err});
-				return;
-			}
-			
-			var id = results[0].id || "";
-			pool.query(query, [values, id], function (err, results, fields) {
-				if (err) {
-					res.json({err:err});
-					return;
-				}
-
-				res.json({results:results,fields:fields});
-			});
-			
-		});
+		res.json({err:"Please specify an id to modify"});
 	}
 });
 
@@ -186,24 +163,7 @@ app.all(["/delete","/destroy","/remove"], function(req, res) {
 		});
 		
 	} else {
-		getRandomRow(function(err, results, fields) {
-			if (err) {
-				res.json({err:err});
-				return;
-			}
-			
-			var id = results[0].id || "";
-			var query = "DELETE FROM student WHERE id = ?";
-			pool.query(query, [id], function (err, results, fields) {
-				if (err) {
-					res.json({err:err});
-					return;
-				}
-
-				res.json({results:results,fields:fields});
-			});
-			
-		});
+		res.json({err:"Please specify an id to delete"});
 	}
 });
 
