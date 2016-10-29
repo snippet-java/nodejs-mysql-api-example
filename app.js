@@ -34,7 +34,7 @@ var dbConfig = {
 
 var pool  = mysql.createPool(dbConfig);
 app.set('pool', pool);
-var db = require('./lib/db.js');
+var db = require('./lib/mysql/db.js');
 
 //==== CREATE STUDENT TABLE ====================================//
 // curl <url>/mysql/createtable                                 //
