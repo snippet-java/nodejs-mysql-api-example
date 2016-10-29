@@ -43,7 +43,7 @@ If you want to run the app locally, you will need to populate the `services.json
 such as the username and password.
 
 If you want to use a different MySQL instance (not from Bluemix), you will need to populate the `services.json` and remove
-`./services.json` from the `.cfignore` file in order to push it using `cf push` or deploy from JazzHub.
+`/services.json` from the `.cfignore` file in order to push it using `cf push` or deploy from JazzHub.
 
 
 ### Privacy Notice
