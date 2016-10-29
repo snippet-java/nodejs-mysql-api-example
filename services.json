@@ -1,0 +1,10 @@
+{
+	"mysql" : {
+		"host"		: "",
+		"user"		: "",
+		"password"	: "",
+		"database"	: "",
+  		"tableName"	: "student",
+  		"connectionLimit" : 4
+  	}
+}
