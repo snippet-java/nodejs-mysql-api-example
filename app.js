@@ -37,39 +37,39 @@ app.set('pool', pool);
 var db = require('./lib/db.js');
 
 //==== CREATE STUDENT TABLE ====================================//
-// curl <url>/createTable                                       //
+// curl <url>/mysql/createtable                                 //
 //////////////////////////////////////////////////////////////////
-app.all(["/createtable"], 					db.createTable);
+app.all(["/mysql/createtable"], db.createTable);
 
 //==== CREATE / INSERT ROW =====================================//
-// curl <url>/create                                            //
+// curl <url>/mysql/create                                      //
 //////////////////////////////////////////////////////////////////
-app.all(["/create","/insert","/add"], 		db.create);
+app.all(["/mysql/create","/mysql/insert","/mysql/add"], db.create);
 
 //==== LIST ALL ROWS IN TABLE===================================//
-// curl <url>/list                                              //
+// curl <url>/mysql/list                                        //
 //////////////////////////////////////////////////////////////////
-app.all(["/list"], 							db.list);
+app.all(["/mysql/list"], db.list);
 
 //==== READ 1 ROW BASED ON ID ==================================//
-// curl <url>/read?id=3                                         //
+// curl <url>/mysql/read?id=3                                   //
 //////////////////////////////////////////////////////////////////
-app.all(["/read","/get"], 					db.read);
+app.all(["/mysql/read","/mysql/get"], db.read);
 
 //==== UPDATE 1 ROW BASED ON ID ================================//
-// curl <url>/update?id=3&firstname=Bob&lastname=Peter          //
+// curl <url>/mysql/update?id=3&firstname=Bob&lastname=Peter    //
 //////////////////////////////////////////////////////////////////
-app.all(["/update","/modify"], 				db.update);
+app.all(["/mysql/update","/mysql/modify"], db.update);
 
 //==== DELETE 1 ROW BASED ON ID ================================//
-//curl <url>/delete?id=3                                        //
+//curl <url>/mysql/delete?id=3                                  //
 //////////////////////////////////////////////////////////////////
-app.all(["/delete","/destroy","/remove"], 	db.deleteRow);
+app.all(["/mysql/delete","/mysql/destroy","/mysql/remove"], db.deleteRow);
 
 //==== DELETE / DROP STUDENT TABLE =============================//
-//curl <url>/deletetable                                        //
+//curl <url>/mysql/deletetable                                  //
 //////////////////////////////////////////////////////////////////
-app.all(["/deletetable","/droptable","/destroytable","/removetable"], db.deleteTable);
+app.all(["/mysql/deletetable","/mysql/droptable","/mysql/destroytable","/mysql/removetable"], db.deleteTable);
 
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
